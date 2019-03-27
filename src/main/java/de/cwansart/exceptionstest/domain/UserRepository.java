@@ -15,8 +15,8 @@ public class UserRepository {
     }
 
     public User getById(Long id) {
-        TypedQuery<User> query = entityManager.createQuery("select u from User u where u.id = ?1", User.class);
-        query.setParameter(1, id);
+        TypedQuery<User> query = entityManager.createQuery("select u from User u where u.id = :id", User.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 }

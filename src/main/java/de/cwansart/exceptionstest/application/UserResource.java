@@ -6,8 +6,8 @@ import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 @Path("users")
@@ -23,7 +23,7 @@ public class UserResource {
 
     @GET
     @Path("{id}")
-    public Response getUserById(@QueryParam("id") Long id) {
+    public Response getUserById(@PathParam("id") Long id) {
         try {
             return Response.ok(repository.getById(id)).build();
         } catch (NoResultException e) {
